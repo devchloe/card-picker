@@ -2,13 +2,14 @@
   <div>
     <label for="category"></label>
     <select id="category" v-model="selectedCategory" data-category>
-      <option disabled value="">Select category</option>
-      <option>cafe</option>
+      <option disabled value="">Select Category</option>
+      <option v-for="(category, index) in selectableCategories" :key="index">
+        {{ category }}
+      </option>
     </select>
     <label for="price"></label>
     <input type="text" id="price" v-model="price" data-price />
-    <button @click="calculateDiscountAmountByCard">Calculate</button>
-    {{ cardBenefitAmountsForPrice.length }}
+    <button @click="calculateCardCategoryBenefitAmounts">Calculate</button>
     <ul>
       <li
         class="result"
@@ -69,11 +70,28 @@ export default {
           ]
         }
       ],
-      cardBenefitAmountsForPrice: []
+      cardBenefitAmountsForPrice: [
+        { card: "", type: "", category: "", rate: "", amount: "" }
+      ]
     };
   },
+  computed: {
+    selectableCategories: function() {
+      return this.cardCategoryBenefits
+        .map(cardCategoryBenefit => cardCategoryBenefit.categories)
+        .reduce((result, categories) => {
+          categories.forEach(c => {
+            if (!result.includes(c)) {
+              result.push(c);
+            }
+          });
+
+          return result;
+        });
+    }
+  },
   methods: {
-    calculateDiscountAmountByCard() {
+    calculateCardCategoryBenefitAmounts() {
       this.cardBenefitAmountsForPrice = this.cardCategoryBenefits
         .filter(info => info.categories.includes(this.selectedCategory))
         .map(info => ({
