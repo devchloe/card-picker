@@ -1,0 +1,12 @@
+[
+  {
+    "card": "hyundai",
+    "type": "point",
+    "amount": 100
+  },
+  {
+    "card": "lotte",
+    "type": "discount",
+    "amount": 500
+  }
+]

@@ -1,0 +1,39 @@
+[
+  {
+    "card": "hyundai",
+    "type": "point",
+    "categories": ["cafe", "shopping", "oil"],
+    "benefits": [
+      {
+        "category": "cafe",
+        "rate": "1%"
+      },
+      {
+        "category": "shopping",
+        "rate": "2%"
+      }
+    ]
+  },
+  {
+    "card": "lotte",
+    "type": "discount",
+    "categories": ["cafe", "transportation", "internet"],
+    "benefits": [
+      {
+        "category": "cafe",
+        "rate": "50%",
+        "limit": "10000"
+      },
+      {
+        "category": "transportation",
+        "rate": "10%",
+        "limit": "5000"
+      },
+      {
+        "category": "internet",
+        "rate": "10%",
+        "limit": "5000"
+      }
+    ]
+  }
+]
